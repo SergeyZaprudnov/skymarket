@@ -16,7 +16,6 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 load_dotenv()
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -33,17 +32,21 @@ ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
-# TODO здесь тоже нужно подключить Swagger и corsheaders
+# Внесены настройки
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
+    "djoser",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "corsheaders",
     "rest_framework",
+    "rest_framework_simplejwt",
     "drf_yasg",
+    "phonenumber_field",
+    "django_filters",
 
     "users",
     "ads",
@@ -82,16 +85,26 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "skymarket.wsgi.application"
 
-# TODO здесь мы настраиваем аутентификацию и пагинацию
+TOTAL_ON_PAGE = 5
+
+# Внесены настройки
 REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': TOTAL_ON_PAGE,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
 }
-# TODO здесь мы настраиваем Djoser
+# Внесены настройки
 DJOSER = {
+    'SERIALIZERS': {
+        'user_create': 'users.serializers.UserRegistrationSerializer'
+    },
+    'LOGIN_FIELD': 'email'
 }
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
 
 DATABASES = {
     'default': {
@@ -133,6 +146,8 @@ USE_I18N = True
 
 USE_TZ = True
 
+PHONENUMBER_DEFAULT_REGION = 'RU'
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
@@ -146,7 +161,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "django_media")
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:8000',
 ]
-CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
