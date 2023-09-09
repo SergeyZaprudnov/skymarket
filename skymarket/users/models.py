@@ -6,8 +6,8 @@ from django.utils.translation import gettext_lazy as _
 
 
 class UserRoles(models.TextChoices):
-    USER = 'user', 'USER'  # Пользователь
-    ADMIN = 'admin', 'Administrator'  # Администратор
+    USER = 'user', _('user')  # Пользователь
+    ADMIN = 'admin', _('admin')  # Администратор
 
 
 class User(AbstractBaseUser):
