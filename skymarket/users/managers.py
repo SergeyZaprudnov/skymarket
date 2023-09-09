@@ -1,11 +1,13 @@
 from django.contrib.auth.models import (
     BaseUserManager
 )
+
+
 # TODO здесь должен быть менеджер для модели Юзера.
 # TODO Поищите эту информацию в рекомендациях к проекту
 class UserManager(BaseUserManager):
     """
-    функция создания пользователя — в нее мы передаем обязательные поля
+    Функция создания пользователя — в нее мы передаем обязательные поля
     """
 
     def create_user(self, email, first_name, last_name, phone, password=None, role='user'):
@@ -26,7 +28,7 @@ class UserManager(BaseUserManager):
 
     def create_superuser(self, email, first_name, last_name, phone, password=None, role='admin'):
         """
-        функция для создания суперпользователя — с ее помощью мы создаем админинстратора
+        Функция для создания суперпользователя — с ее помощью мы создаем админинстратора
         это можно сделать с помощью команды createsuperuser
         """
         user = self.create_user(
