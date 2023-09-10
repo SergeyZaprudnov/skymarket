@@ -36,22 +36,20 @@ ALLOWED_HOSTS = ["*"]
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
-    "djoser",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "corsheaders",
     "rest_framework",
     "rest_framework_simplejwt",
-    "drf_yasg",
-    "phonenumber_field",
-    "django_filters",
-
+    "djoser",
     "users",
     "ads",
     "redoc",
-
+    "corsheaders",
+    "drf_yasg",
+    "phonenumber_field",
+    "django_filters",
 ]
 
 MIDDLEWARE = [
