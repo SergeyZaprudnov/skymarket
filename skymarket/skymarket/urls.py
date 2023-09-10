@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-# TODO здесь необходимо подклюючит нужные нам urls к проекту
+
 
 urlpatterns = [
     path("api/admin/", admin.site.urls),
