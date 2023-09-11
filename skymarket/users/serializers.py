@@ -6,14 +6,20 @@ User = get_user_model()
 
 
 class UserRegistrationSerializer(BaseUserRegistrationSerializer):
-    password = serializers.CharField(required=True)
+    def create(self, validated_data):
+        user = User.objects.create(**validated_data)
 
+        user.set_password(validated_data.get('password'))
+        user.save()
+
+        return user
+
+
+class UserAdSerializer(serializers.ModelSerializer):
     class Meta:
-        mosel = User
-        excluse = ('id',)
+        model = User
+        fields = ['first_name', 'last_name', 'username']
 
 
 class CurrentUserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        exclude = ('id', 'password')
+    pass

@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "drf_yasg",
     "phonenumber_field",
     "django_filters",
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -84,14 +85,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "skymarket.wsgi.application"
 
-TOTAL_ON_PAGE = 5
+TOTAL_ON_PAGE = 4
 
 # Внесены настройки
 REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': TOTAL_ON_PAGE,
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework.authentication.TokenAuthentication",
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
 }
 # Внесены настройки
@@ -99,6 +100,10 @@ DJOSER = {
     'SERIALIZERS': {
         'user_create': 'users.serializers.UserRegistrationSerializer'
     },
+    'PASSWORD_RESET_CONFIRM_URL': '#/password/reset/confirm/{uid}/{token}',
+    'USERNAME_RESET_CONFIRM_URL': '#/username/reset/confirm/{uid}/{token}',
+    'ACTIVATION_URL': '#/activate/{uid}/{token}',
+
     'LOGIN_FIELD': 'email'
 }
 
