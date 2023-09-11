@@ -4,10 +4,10 @@ from rest_framework.decorators import action
 from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
-from ads.filters import AdFilter
-from ads.models import Ad
-from ads.permissions import IsOwner, IsAdmin
-from ads.serializers import AdDetailSerializer, AdSerializer, CommentSerializer
+from .filters import AdFilter
+from .models import Ad
+from .permissions import IsOwner, IsAdmin
+from .serializers import AdDetailSerializer, AdSerializer, CommentSerializer
 
 
 class AdPagination(pagination.PageNumberPagination):
