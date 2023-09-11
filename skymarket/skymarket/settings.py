@@ -165,7 +165,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "django_media")
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:8000',
 ]
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = False
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

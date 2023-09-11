@@ -1,5 +1,5 @@
 """
-WSGI config for skymarkett project.
+WSGI skymarket for skymarkett project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
