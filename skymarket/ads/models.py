@@ -12,7 +12,7 @@ class Ad(models.Model):
     image = models.ImageField(verbose_name='Изображение', upload_to='ads', **NULLABLE)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Автор',
                                related_name='abs', default=1)
-    created_at = models.DateTimeField(verbose_name='Дата и время создания', default=timezone.now)
+    created_at = models.DateTimeField(verbose_name='Дата и время создания', auto_now_add=True)
 
     def __str__(self):
         result = self.title[:50]
@@ -29,7 +29,7 @@ class Comment(models.Model):
     text = models.CharField(max_length=1500, verbose_name='Название', default='')
     author = models.ForeignKey(settings.AUTH_USER_MODEL, null=True,  on_delete=models.CASCADE, verbose_name='Автор')
     ad = models.ForeignKey(Ad, on_delete=models.CASCADE, null=True,  verbose_name='Объявление')
-    create_at = models.DateTimeField(verbose_name='Дата и время создания', default=timezone.now)
+    created_at = models.DateTimeField(verbose_name='Дата и время создания', auto_now_add=True)
 
     def __str__(self):
         result = self.text[:50]
