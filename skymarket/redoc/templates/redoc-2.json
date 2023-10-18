@@ -9,7 +9,7 @@
   "schemes":[
     "http"
   ],
-  "basePath":"/api/",
+  "basePath":"/",
   "consumes":[
     "application/json"
   ],
